@@ -18,7 +18,7 @@
 <label for="code">Paste Code: </label>
 <textarea [(ngModel)]="enteredCode" placeholder="Enter your code" id="code" class="border" cols="40" rows="10"></textarea>
 <br />
-<button class="border hover:bg-gray-300 hover:cursor-pointer ">Review</button>
-<p>{{selectedLanguage}}</p>
-<p>{{selectedReviewFocus}}</p>
-<p>{{enteredCode}}</p>
+<button (click)="submitReview()" class="border hover:bg-gray-300 hover:cursor-pointer ">Review</button>
+<p>{{data.language}}</p>
+<p>{{data.reviewFocus}}</p>
+<p>{{data.code}}</p>

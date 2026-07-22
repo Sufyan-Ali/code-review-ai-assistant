@@ -11,4 +11,16 @@ export class CodeInputComponent {
   selectedLanguage: string = ""
   selectedReviewFocus: string = ""
   enteredCode: string = ""
+  data  = {
+      "language" : "",
+      "reviewFocus" : "",
+      "code" : ""
+  }
+  submitReview() {
+    this.data = {
+      "language" : this.selectedLanguage,
+      "reviewFocus" : this.selectedReviewFocus,
+      "code" : this.enteredCode
+    }
+  }
 }

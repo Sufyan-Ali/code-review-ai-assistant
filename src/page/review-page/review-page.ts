@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { CodeInputComponent } from '../../features/review/components/code-input-component/code-input-component';
 
 @Component({
   selector: 'app-review-page',
-  imports: [],
+  imports: [CodeInputComponent],
   templateUrl: './review-page.html',
   styleUrl: './review-page.css',
 })

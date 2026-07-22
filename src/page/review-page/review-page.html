@@ -1,1 +1,6 @@
-<app-code-input-component></app-code-input-component>
+<app-code-input-component (reviewSubmitted)="handleReviewRequest($event)" />
+@if (!loading()) {
+  <app-review-result-component [reviewResult]="reviewResult" />
+} @else {
+  <p>Currently loading....</p>
+}

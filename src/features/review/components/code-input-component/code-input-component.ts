@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { reviewRequest } from '../../models/review-request.model';
 
 @Component({
   selector: 'app-code-input-component',
@@ -11,13 +12,13 @@ export class CodeInputComponent {
   selectedLanguage: string = ""
   selectedReviewFocus: string = ""
   enteredCode: string = ""
-  data  = {
+  reviewData :reviewRequest  = {
       "language" : "",
       "reviewFocus" : "",
       "code" : ""
   }
   submitReview() {
-    this.data = {
+    this.reviewData = {
       "language" : this.selectedLanguage,
       "reviewFocus" : this.selectedReviewFocus,
       "code" : this.enteredCode

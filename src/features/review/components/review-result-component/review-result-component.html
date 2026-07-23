@@ -4,7 +4,7 @@
     <option value="all">All ({{issuesCount().all}})</option>
     <option value="open">Open ({{issuesCount().open}})</option>
     <option value="resolved">Resolved({{issuesCount().resolved}})</option>
-  </select>
+  </select> 
 </div>
 <app-issue-list-component (resolveClicked)="resolveClicked.emit($event)" [issuesList]="filteredIssues()??[]"/>}
 <p>{{reviewResult()?.overallScore}}</p>

@@ -1,5 +1,4 @@
-export interface ReviewResult{
-    issues: {
+export interface Issue {
         id: string,
         title: string,
         description: string,
@@ -8,7 +7,5 @@ export interface ReviewResult{
         suggestion: string,
         category: string,
         resolved: boolean
-    }[],
-    comments: string[],
-    overallScore: number
+
 }

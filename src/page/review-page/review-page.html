@@ -1,6 +1,6 @@
 <app-code-input-component (reviewSubmitted)="handleReviewRequest($event)" />
 @if (!loading()) {
-  <app-review-result-component [reviewResult]="reviewResult" />
+  <app-review-result-component [reviewResult]="reviewResult()" (resolveClicked)="handleResolveClick($event)" />
 } @else {
   <p>Currently loading....</p>
 }

@@ -12,7 +12,7 @@ export class CodeInputComponent {
   selectedLanguage: string = ""
   selectedReviewFocus: string = ""
   enteredCode: string = ""
-  reviewData :ReviewRequest  = {
+  submittedData :ReviewRequest  = {
       "language" : "",
       "reviewFocus" : "",
       "code" : ""
@@ -20,11 +20,11 @@ export class CodeInputComponent {
   reviewSubmitted = output<ReviewRequest>()
 
   submitReview() {
-    this.reviewData = {
+    this.submittedData = {
       "language" : this.selectedLanguage,
       "reviewFocus" : this.selectedReviewFocus,
       "code" : this.enteredCode
     }
-    this.reviewSubmitted.emit(this.reviewData)
+    this.reviewSubmitted.emit(this.submittedData)
   }
 }

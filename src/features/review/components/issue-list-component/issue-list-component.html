@@ -1,0 +1,3 @@
+@for (issue of issuesList(); track $index) {
+    <app-issue-card-component (resolveClicked)="resolveClicked.emit($event)" [issue] = "issue"/>
+}

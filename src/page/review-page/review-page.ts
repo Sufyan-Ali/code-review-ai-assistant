@@ -6,20 +6,37 @@ import { ReviewResultComponent } from '../../features/review/components/review-r
 import { ReviewResult } from '../../features/review/models/review-result.model';
 @Component({
   selector: 'app-review-page',
-  imports: [CodeInputComponent,ReviewResultComponent],
+  imports: [CodeInputComponent, ReviewResultComponent],
   templateUrl: './review-page.html',
   styleUrl: './review-page.css',
 })
 export class ReviewPage {
   private rs = inject(ReviewService)
-  reviewResult: ReviewResult = {error: [],comments: [],overallScore : 0}
-  loading  = signal(false)
+  reviewResult = signal<ReviewResult | null>(null)
+  loading = signal(false)
 
-  handleReviewRequest(reviewData: ReviewRequest) {
+  handleReviewRequest(submittedData: ReviewRequest) {
     this.loading.set(true)
-    this.rs.RequestCodeReview(reviewData).subscribe(res => {this.reviewResult = res
+    this.rs.RequestCodeReview(submittedData).subscribe(res => {
+      this.reviewResult.set(res)
       this.loading.set(false)
+      console.log(this?.reviewResult())
     })
-    console.log(this?.reviewResult)
+  }
+  handleResolveClick(id: string) {
+    const currentResult = this.reviewResult();
+    if (currentResult === null) {
+      return;
+    }
+    let newReviewResult: ReviewResult = {
+      ...currentResult,
+      issues: currentResult.issues.map(issue => {
+        if (issue.id === id) {
+          issue.resolved = true
+        }
+        return issue
+      })
+    }
+    this.reviewResult.set(newReviewResult)
   }
 }

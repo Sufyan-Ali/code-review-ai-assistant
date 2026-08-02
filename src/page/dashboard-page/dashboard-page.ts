@@ -12,6 +12,8 @@ import { filter } from 'rxjs';
 export class DashboardPage {
   state = inject(ReviewStateService)
   reviewStats = computed(() => {
+    const currentReview = this.state.currentReview()
+    const reviewHistory = this.state.reviewHistory()
     let stats = {
       totalReviews: 0,
       avgOverallScore: 0,
@@ -22,18 +24,15 @@ export class DashboardPage {
         low: 0
       }
     }
-    if (this.state.currentReview()) {
-      stats.totalReviews = this.state.reviewHistory().length + 1
-      stats.totalOpenIssues = this.state.reviewHistory().reduce((total, currentValue) => total + currentValue.issues.filter(issue => !issue.resolved).length, 0)
-      console.log("condition");
+    if (currentReview) {
+      stats.totalReviews = reviewHistory.length + 1
+      stats.totalOpenIssues = reviewHistory.reduce((total, currentValue) => total + currentValue.issues.filter(issue => !issue.resolved).length, 0) +
+      currentReview?.issues.filter(issue => !issue.resolved).length
+      stats.avgOverallScore = (reviewHistory.reduce((total, currentValue,index) => (total + currentValue.overallScore), 0) + currentReview.overallScore)/stats.totalReviews
+      stats.severityStats.high = reviewHistory.reduce((total, currentValue) => total + currentValue.issues.filter(issue => issue.severity === 'high').length, 0) + currentReview.issues.filter(issue => issue.severity === 'high').length
+      stats.severityStats.medium = reviewHistory.reduce((total, currentValue) => total + currentValue.issues.filter(issue => issue.severity === 'medium').length, 0) + currentReview.issues.filter(issue => issue.severity === 'medium').length
+      stats.severityStats.low = reviewHistory.reduce((total, currentValue) => total + currentValue.issues.filter(issue => issue.severity === 'low').length, 0) + currentReview.issues.filter(issue => issue.severity === 'low').length
     }
     return stats
   })
-  countOpenIssues(currentReview: boolean) {
-    let count
-    if (currentReview) {
-
-    }
-    return count
-  }
 }

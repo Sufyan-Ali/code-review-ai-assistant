@@ -7,8 +7,14 @@ import { delay, Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class ReviewService {
+  private nextId = 0
   RequestCodeReview(request: ReviewRequest): Observable<ReviewResult> {
     let response: ReviewResult = {
+      id: this.nextId++,
+      date: new Date(),
+      language: request.language,
+      code: request.code,
+      reviewFocus: request.reviewFocus,
       issues: [{
         id: "1",
         title: "a",

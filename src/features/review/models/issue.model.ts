@@ -7,5 +7,4 @@ export interface Issue {
         suggestion: string,
         category: string,
         resolved: boolean
-
 }

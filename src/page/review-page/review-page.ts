@@ -4,6 +4,8 @@ import { ReviewRequest } from '../../features/review/models/review-request.model
 import { ReviewService } from '../../core/review/services/review-service';
 import { ReviewResultComponent } from '../../features/review/components/review-result-component/review-result-component';
 import { ReviewResult } from '../../features/review/models/review-result.model';
+import { ReviewStateService } from '../../core/review/services/review-state-service';
+
 @Component({
   selector: 'app-review-page',
   imports: [CodeInputComponent, ReviewResultComponent],
@@ -12,6 +14,7 @@ import { ReviewResult } from '../../features/review/models/review-result.model';
 })
 export class ReviewPage {
   private rs = inject(ReviewService)
+  private state = inject(ReviewStateService)
   reviewResult = signal<ReviewResult | null>(null)
   loading = signal(false)
 
@@ -20,7 +23,9 @@ export class ReviewPage {
     this.rs.RequestCodeReview(submittedData).subscribe(res => {
       this.reviewResult.set(res)
       this.loading.set(false)
-      console.log(this?.reviewResult())
+      this.state.addNewReview(res)
+      console.log(this.state.reviewHistory(),"history")
+      console.log(this.state.currentReview(),"res")
     })
   }
   handleResolveClick(id: string) {
@@ -28,7 +33,7 @@ export class ReviewPage {
     if (currentResult === null) {
       return;
     }
-    let newReviewResult: ReviewResult = {
+    const newReviewResult: ReviewResult = {
       ...currentResult,
       issues: currentResult.issues.map(issue => {
         if (issue.id === id) {

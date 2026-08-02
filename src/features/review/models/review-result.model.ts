@@ -1,14 +1,12 @@
+import { Issue } from "./issue.model";
+
 export interface ReviewResult{
-    issues: {
-        id: string,
-        title: string,
-        description: string,
-        severity: string,
-        lineNumber: number,
-        suggestion: string,
-        category: string,
-        resolved: boolean
-    }[],
+    id: number,
+    date: Date,
+    language: string,
+    code: string,
+    reviewFocus: string,
+    issues: Issue[],
     comments: string[],
     overallScore: number
 }

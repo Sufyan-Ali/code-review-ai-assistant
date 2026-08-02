@@ -5,5 +5,6 @@ export interface ReviewHistoryElement{
     date: Date,
     language: string,
     code: string,
+    reviewFocus: string,
     reviewResult: ReviewResult
 }

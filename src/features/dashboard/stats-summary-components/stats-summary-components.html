@@ -1,7 +1,34 @@
-<p>Stats Summary</p>
-<p>Total Reviews: {{reviewStats()?.totalReviews}}</p>
-<p>Total Open Issues: {{reviewStats()?.totalOpenIssues}}</p>
-<p>Average Overall Score: {{reviewStats()?.avgOverallScore}}</p>
-<p>High Severity Issues: {{reviewStats()?.severityStats?.high}}</p>
-<p>Medium Severity Issues: {{reviewStats()?.severityStats?.medium}}</p>
-<p>Low Severity Issues: {{reviewStats()?.severityStats?.low}}</p>
+<h3>Stats Summary</h3>
+<p>Total Reviews: {{ reviewStats()?.totalReviews }}</p>
+<p>Total Open Issues: {{ reviewStats()?.totalOpenIssues }}</p>
+<p>Average Overall Score: {{ reviewStats()?.avgOverallScore }}</p>
+<p>High Severity Issues: {{ reviewStats()?.severityStats?.high }}</p>
+<p>Medium Severity Issues: {{ reviewStats()?.severityStats?.medium }}</p>
+<p>Low Severity Issues: {{ reviewStats()?.severityStats?.low }}</p>
+<br />
+<h3>Current Review</h3>
+@if (currentReview()) {
+  <p>language: {{ currentReview()?.language }}</p>
+  <p>
+    date:
+    {{
+      currentReview()?.date
+    }}
+  </p>
+  <p>overall score: {{ currentReview()?.overallScore }}</p>
+  <p>number of issues: {{ currentReview()?.issues?.length }}</p>
+} @else {
+  <p>Currently there is no review.</p>
+}
+<br />
+<h3>Review History</h3>
+@for (review of reviewHistory(); track $index) {
+  <p>Review no.:{{ $index + 1 }}</p>
+  <p>language: {{ review.language }}</p>
+  <p>
+    date:
+    {{ review.date }}
+  </p>
+  <p>overall score: {{ review.overallScore }}</p>
+  <p>number of issues: {{ review.issues.length }}</p>
+}

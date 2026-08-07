@@ -1,4 +1,5 @@
 import { Component, input } from '@angular/core';
+import { ReviewResult } from '../../review/models/review-result.model';
 
 interface DashboardStats {
   totalReviews: number,
@@ -18,4 +19,6 @@ interface DashboardStats {
 })
 export class StatsSummaryComponents {
   reviewStats = input<DashboardStats>()
+  reviewHistory = input<ReviewResult[]>([])
+  currentReview = input<ReviewResult | null>(null)
 }

@@ -24,24 +24,10 @@ export class ReviewPage {
       this.reviewResult.set(res)
       this.loading.set(false)
       this.state.addNewReview(res)
-      console.log(this.state.reviewHistory(),"history")
-      console.log(this.state.currentReview(),"res")
     })
   }
   handleResolveClick(id: string) {
-    const currentResult = this.reviewResult();
-    if (currentResult === null) {
-      return;
-    }
-    const newReviewResult: ReviewResult = {
-      ...currentResult,
-      issues: currentResult.issues.map(issue => {
-        if (issue.id === id) {
-          issue.resolved = true
-        }
-        return issue
-      })
-    }
-    this.reviewResult.set(newReviewResult)
+    this.state.handleResolveIssue(id)
+    this.reviewResult.set(this.state.currentReview())
   }
 }

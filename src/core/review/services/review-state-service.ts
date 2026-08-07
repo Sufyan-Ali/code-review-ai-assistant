@@ -8,8 +8,8 @@ export class ReviewStateService {
   currentReview = signal<ReviewResult | null>(null)
   reviewHistory = signal<ReviewResult[]>([])
   constructor() {
-    // this.retrieveReviews()
-    // this.saveReviews()
+    this.retrieveReviews()
+    this.saveReviews()
   }
   addNewReview(review: ReviewResult) {
     const prevReview = this.currentReview()

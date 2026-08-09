@@ -2,5 +2,5 @@
 @if (!loading()) {
   <app-review-result-component [reviewResult]="reviewResult()" (resolveClicked)="handleResolveClick($event)" />
 } @else {
-  <p>Currently loading....</p>
+  <app-loading-component />
 }

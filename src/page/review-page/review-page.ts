@@ -5,10 +5,11 @@ import { ReviewService } from '../../core/review/services/review-service';
 import { ReviewResultComponent } from '../../features/review/components/review-result-component/review-result-component';
 import { ReviewResult } from '../../features/review/models/review-result.model';
 import { ReviewStateService } from '../../core/review/services/review-state-service';
+import { LoadingComponent } from "../../shared/loading-component/loading-component";
 
 @Component({
   selector: 'app-review-page',
-  imports: [CodeInputComponent, ReviewResultComponent],
+  imports: [CodeInputComponent, ReviewResultComponent, LoadingComponent],
   templateUrl: './review-page.html',
   styleUrl: './review-page.css',
 })

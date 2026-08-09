@@ -1,10 +1,11 @@
 import { Component, computed, inject } from '@angular/core';
 import { StatsSummaryComponents } from '../../features/dashboard/stats-summary-components/stats-summary-components';
 import { ReviewStateService } from '../../core/review/services/review-state-service';
+import { LoadingComponent } from "../../shared/loading-component/loading-component";
 
 @Component({
   selector: 'app-dashboard-page',
-  imports: [StatsSummaryComponents],
+  imports: [StatsSummaryComponents, LoadingComponent],
   templateUrl: './dashboard-page.html',
   styleUrl: './dashboard-page.css',
 })

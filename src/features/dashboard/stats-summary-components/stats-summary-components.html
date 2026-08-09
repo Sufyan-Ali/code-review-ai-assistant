@@ -2,9 +2,9 @@
 <p>Total Reviews: {{ reviewStats()?.totalReviews }}</p>
 <p>Total Open Issues: {{ reviewStats()?.totalOpenIssues }}</p>
 <p>Average Overall Score: {{ reviewStats()?.avgOverallScore }}</p>
-<p>High Severity Issues: {{ reviewStats()?.severityStats?.high }}</p>
-<p>Medium Severity Issues: {{ reviewStats()?.severityStats?.medium }}</p>
-<p>Low Severity Issues: {{ reviewStats()?.severityStats?.low }}</p>
+<p>High Severity Issues: <app-badge-component displayText="{{reviewStats()?.severityStats?.high}}" badgeColor="red" /> </p>
+<p>Medium Severity Issues: <app-badge-component displayText="{{ reviewStats()?.severityStats?.medium }}" badgeColor="yellow" /> </p>
+<p>Low Severity Issues: <app-badge-component displayText="{{ reviewStats()?.severityStats?.low }}" badgeColor="gray" /> </p>
 <br />
 <h3>Current Review</h3>
 @if (currentReview()) {

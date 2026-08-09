@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
 import { ReviewResult } from '../../review/models/review-result.model';
+import { BadgeComponent } from "../../../shared/badge-component/badge-component";
 
 interface DashboardStats {
   totalReviews: number,
@@ -13,7 +14,7 @@ interface DashboardStats {
 }
 @Component({
   selector: 'app-stats-summary-components',
-  imports: [],
+  imports: [BadgeComponent],
   templateUrl: './stats-summary-components.html',
   styleUrl: './stats-summary-components.css',
 })

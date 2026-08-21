@@ -1,6 +1,7 @@
+<form [formGroup]="data" (ngSubmit)="submitReview()"> 
 <div class="mb-1">
   <label for="languages">Choose language: </label>
-  <select [(ngModel)]="selectedLanguage" name="languages" id="languages" class="border">
+  <select name="languages" id="language" class="border" formControlName="language">
     <option value="php">Php</option>
     <option value="js">JS</option>
     <option value="python">Python</option>
@@ -9,16 +10,17 @@
 </div>
 <div class="mb-1">
   <label for="review-focus">Choose Review: </label>
-  <select [(ngModel)]="selectedReviewFocus" name="review-focus" id="review-focus" class="border">
+  <select name="review-focus" id="review-focus" class="border" formControlName="reviewFocus">
     <option value="Security">Security</option>
     <option value="naming-conventions">Naming Conventions</option>
     <option value="best-practice">Best Practices</option>
   </select>
 </div>
 <label for="code">Paste Code: </label>
-<textarea [(ngModel)]="enteredCode" placeholder="Enter your code" id="code" class="border" cols="40" rows="10"></textarea>
+<textarea placeholder="Enter your code" id="code" class="border" cols="40" rows="10" formControlName="code"></textarea>
 <br />
 <button (click)="submitReview()" class="border hover:bg-gray-300 hover:cursor-pointer ">Review</button>
+</form>
 <p>{{submittedData.language}}</p>
 <p>{{submittedData.reviewFocus}}</p>
 <p>{{submittedData.code}}</p>

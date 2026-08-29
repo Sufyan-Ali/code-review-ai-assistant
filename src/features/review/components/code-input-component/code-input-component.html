@@ -19,7 +19,7 @@
 <label for="code">Paste Code: </label>
 <textarea placeholder="Enter your code" id="code" class="border" cols="40" rows="10" formControlName="code"></textarea>
 <br />
-<button (click)="submitReview()" class="border hover:bg-gray-300 hover:cursor-pointer ">Review</button>
+<button (click)="submitReview()" class="border hover:bg-gray-300 hover:cursor-pointer disabled:bg-gray-100 disabled:border-gray-200 disabled:text-gray-400" [disabled]="data.invalid">Review</button>
 </form>
 <p>{{submittedData.language}}</p>
 <p>{{submittedData.reviewFocus}}</p>

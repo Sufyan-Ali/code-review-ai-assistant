@@ -9,7 +9,7 @@ export const routes: Routes = [
         component:MainLayout,
         children: [
             {path:'',component:ReviewPage},
-            {path:'dashboard',component:DashboardPage},
+            {path:'dashboard',loadComponent : () => import('../page/dashboard-page/dashboard-page').then(m => m.DashboardPage)},
         ]
     }
 ];

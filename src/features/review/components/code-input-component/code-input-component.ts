@@ -1,5 +1,5 @@
 import { Component, inject, output } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReviewRequest } from '../../models/review-request.model';
 
 @Component({
@@ -14,7 +14,7 @@ export class CodeInputComponent {
   // selectedReviewFocus: string = ""
   // enteredCode: string = ""
   data = this.fb.group({
-    "language": [""],
+    "language": [,Validators.required],
     "reviewFocus": [""],
     "code": [""]
   })
@@ -27,11 +27,11 @@ export class CodeInputComponent {
 
   submitReview() {
     this.submittedData = {
-      "language": this.data.value.language ?? "",
+      "language": this.data.value.language ??"",
       "reviewFocus": this.data.value.reviewFocus ?? "",
       "code": this.data.value.code ?? ""
     }
-    console.log(this.data.value);
+    console.log(this.data.value,this.data.valid,"asdjf");
     this.reviewSubmitted.emit(this.submittedData) 
   }
 }
